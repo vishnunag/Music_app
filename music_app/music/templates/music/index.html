@@ -1,0 +1,25 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music App</title>
+    <link rel="stylesheet" href="{% static 'music/css/styles.css' %}">
+</head>
+<body>
+    <h1>My Music Playlist</h1>
+    <div id="playlist">
+        {% for song in songs %}
+        <div class="song">
+            <h3>{{ song.title }} - {{ song.artist }}</h3>
+            <audio controls>
+                <source src="{{ song.file.url }}" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+        {% endfor %}
+    </div>
+    <script src="{% static 'music/js/script.js' %}"></script>
+</body>
+</html>
